@@ -1,0 +1,23 @@
+<div class="container">
+  <a class="refresh" (click)="refresh()">Refresh</a>
+  <ul *ngIf="!error">
+    <li *ngFor="let item of data; let i=index">
+    <input type="checkbox" name="tab" [attr.id]="'tab'+i">
+      <label [attr.for]="'tab'+i">{{item.webTitle}}</label>
+      <div class="tab-content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
+        <a class="fullNews" href={{item.webUrl}}>Read full news</a>
+      </div>
+    </li>
+  </ul>
+  <p *ngIf="error" class="error">{{errorMessage}}</p>
+  <div class="button-container">
+    <a class="previous butt" (click)="loadPrevious()">< Previous Page</a>
+    <div>
+      <input type="text" class="curr" [value]="counter"  (change)="loadNew($event)">
+      of
+      <span>{{pageAmount}}</span>
+    </div>
+    <a class="next butt" (click)="loadNext()">Next Page ></a>
+  </div>
+</div>
